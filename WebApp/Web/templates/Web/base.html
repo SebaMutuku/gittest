@@ -1,0 +1,31 @@
+{%load staticfiles%}
+<link  rel="stylesheet" style="text/css" href="{static 'Web/style.css'}"  />
+<link  rel="stylesheet" style="text/css" href="{static 'css/bootstrap.min.css'}"  />
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Django WebSite</title>
+      {% load bootstrap4%}
+
+      {%bootstrap_css%}
+       {%bootstrap_javascript%}
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <h1 class="mt-2" style="color:block">Sebastian Website</h1>
+          <hr class="mt-0 mb-4">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </body>
+  <div>
+<footer> 2018 - All Rights Reserved Powered by Django</footer>
+</div>
+</html>
