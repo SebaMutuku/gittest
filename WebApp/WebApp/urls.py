@@ -15,10 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from django.contrib.auth import  login
+from django.conf.urls import handler404,handler500
+from django.conf.urls import static
+from django.conf import settings
+from Web import views as webviews
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^Web/',include('Web.urls')),
 
 ]
+
+handler404=webviews.error_404
+handler500=webviews.error_500
