@@ -9,6 +9,8 @@ urlpatterns =[
     url(r'^SignUp/$', views.SignUp, name='SignUp'),
     url(r'^error_404/$',views.error_404,name='Error 404'),
     url(r'^error_500/$',views.error_500,name='Error 500'),
+    url(r'^resetPass/$', views.Reset, name='resetPass'),
+
 
 ]
 
