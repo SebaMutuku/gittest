@@ -1,6 +1,7 @@
 {%extends 'base.html'%}
 
 {% block body %}
+<title>{%block title%}www.sebawebsite.homepage{%endblock%}</title>
 <p>Home page</p>
 {%csrf_token%}
 {{form.as_ul}}

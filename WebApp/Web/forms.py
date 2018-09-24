@@ -1,24 +1,25 @@
-from django.forms import forms
-from django.contrib.auth.forms import UserCreationForm
+from django import forms
 from django.contrib.auth.models import User
 
-class userRegisteration(UserCreationForm):
-    Email=forms.EmailField(required=True)
+class userRegisteration(forms.ModelForm):
+    Email=forms.EmailField(label="Enter Email",required=True)
+    Username=forms.CharField(label="Enter Username",required=True)
+    Othername=forms.CharField(label="Other name",required=True)
+    Password1=forms.CharField(label="Enter Password",widget=forms.PasswordInput,required=True)
+    Password2=forms.CharField(label="Confirm Password",widget=forms.PasswordInput,required=True)
 
     class Meta:
         model=User
         fields=(
-            'username',
-            'Firstname',
-            'Last_name',
+            'Username',
+            'Othername',
             'Email',
             'Password1',
             'Password2'
         )
         def save(self,commit=True):
-            user=super(userRegisteration,self),save(commit=False)
-            user.firstname=forms.cleaned_data['Firstname']
-            user.Last_name=forms.cleaned_data['Last_name']
+            user=super(userRegisteration,self)
+            user.Othername=forms.cleaned_data['Othername']
             user.email=forms.cleaned_data['Email']
 
             if commit:

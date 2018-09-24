@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from Web import forms
 from django.shortcuts import render,HttpResponse
 from django.contrib.auth.forms import  UserCreationForm,AuthenticationForm
 from django.shortcuts import render
@@ -8,7 +9,7 @@ from django.conf import  settings
 
 # Create your views here.
 def home(request):
-    return render(request,'Web/home.html')
+    return render(request,'Web/login.html')
 
 def login(request):
     if request.method=='POST':
@@ -20,9 +21,9 @@ def login(request):
 
 def SignUp(request):
     if request.method=="POST":
-        form=UserCreationForm(data=request.POST)
+        form=forms.userRegisteration(data=request.POST)
     else:
-        form=UserCreationForm()
+        form=forms.userRegisteration()
     return  render(request,'Web/SignUp.html',{'form':form})
 
 def error_404(request):
@@ -33,4 +34,11 @@ def error_404(request):
 def error_500(request):
     context = {'project_name': settings.PROJECT_NAME}
     return render(request, 'Web/error_500,html', context)
+
+def error_400(request):
+    context = {'project_name': settings.PROJECT_NAME}
+    return render(request, 'Web/error_400,html', context)
+def error_403(request):
+    context = {'project_name': settings.PROJECT_NAME}
+    return render(request, 'Web/error_404,html', context)
 
